@@ -33,9 +33,7 @@ $(function(){
 		        var longitude = res.longitude; //经度
 		        var speed = res.speed; //速度，以米/每秒计
 		        var accuracy = res.accuracy; // 位置精度
-		        alert(longitude);
-		        alert(latitude);
-		        //window.position = [longitude,latitude];
+		        window.pos = [longitude,latitude]
 		    }
 		});
 	})	
