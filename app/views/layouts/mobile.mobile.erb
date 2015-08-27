@@ -14,13 +14,11 @@
       window.timestamp  = <%= raw (@timestamp).to_json %>;
       window.url        = <%= raw (@url).to_json %>;
       window.signure    = <%= raw (@signure).to_json %>;
-      window.ak         = 'A9e3c2846f0b707f92a5c6c54dbd9d11';
-    </script>      
+    </script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=A9e3c2846f0b707f92a5c6c54dbd9d11"></script>      
     <%= yield :app_head %>
   </head>
   <body class='mobile'>
-    <div class="container-fluid">
-      <%= yield %>
-    </div>
+    <%= yield %>
   </body>
 </html>
