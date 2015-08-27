@@ -34,7 +34,7 @@ $(function(){
 		        var accuracy = res.accuracy; // 位置精度
 				if($('#map').length > 0){
 					var mp = new BMap.Map('map');
-					mp.centerAndZoom(new BMap.Point(longitude, latitude), 11);
+					mp.centerAndZoom(new BMap.Point(longitude, latitude), 17);
 				}else{
 					alert('地图不存在')
 				}
