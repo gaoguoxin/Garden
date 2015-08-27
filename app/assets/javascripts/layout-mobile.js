@@ -34,9 +34,11 @@ $(function(){
 		        var accuracy = res.accuracy; // 位置精度
 				if($('#map').length > 0){
 					var mp = new BMap.Map('map');
-					mp.centerAndZoom(new BMap.Point(longitude, latitude), 17);
-					var marker = new BMap.Marker(point);  // 创建标注
-					mp.addOverlay(marker); 
+					var point = new BMap.Point(longitude, latitude);
+					mp.centerAndZoom(point, 17);
+					var marker = new BMap.Marker(point);// 创建标注
+					mp.addOverlay(marker);
+					marker.setAnimation(BMAP_ANIMATION_BOUNCE);
 				}else{
 					alert('地图不存在')
 				}
