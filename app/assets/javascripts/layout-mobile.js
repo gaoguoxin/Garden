@@ -1,12 +1,6 @@
 //= require global
 //= require weixin
 $(function(){
-      alert(window.appid);
-      alert(window.noncestr);     
-      alert(window.timestamp);     
-      alert(window.url); 
-      alert(window.signure);       
-         	
 	wx.config({
 		debug: true,
 		appId: window.appid,
@@ -27,7 +21,6 @@ $(function(){
 				if(!res['checkResult']['chooseImage']){
 					$('.choose-img').hide();
 					return false;
-					//$('.blog-modal').modal('hide');
 				}
 			}
 		});
