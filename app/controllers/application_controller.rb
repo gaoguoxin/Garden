@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     render json:{success:success,data:result}
   end
 
+  def render_500
+    raise '500 exception'
+  end
+
   #以下为微信用
 
   def get_wx_config_info
@@ -53,6 +57,14 @@ class ApplicationController < ActionController::Base
       end
     end
   end  
+
+  def set_openid_cookie(openid)
+      cookies[:open_auth] = {
+        :value => openid,
+        :expires => Rails.application.config.permanent_signed_in_months.months.from_now,
+        :domain => :all
+      }    
+  end 
 
   def notify
     render :text => 'true'    
