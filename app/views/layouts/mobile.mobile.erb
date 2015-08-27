@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>园林绿地智能监管系统</title> 
+    <title>园林绿地智能监管系统</title>
     <%= stylesheet_link_tag    'layout-mobile', media: 'all' %>
-    <%= javascript_include_tag 'layout-mobile'%>
+    <%= javascript_include_tag 'layout-mobile' %>
     <%= csrf_meta_tags %>
     <script type='text/javascript'>
       window.appid      = <%= raw (@appid).to_json %>;
@@ -19,8 +19,8 @@
     <%= yield :app_head %>
   </head>
   <body class='mobile'>
-  	<div class="container-fluid">
-    	<%= yield %>
-	</div>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
   </body>
 </html>
