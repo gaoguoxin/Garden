@@ -2,7 +2,7 @@
 //= require weixin
 $(function(){
 	wx.config({
-		debug: true,
+		debug: false,
 		appId: window.appid,
 		timestamp: window.timestamp,
 		nonceStr: window.noncestr,
@@ -35,6 +35,8 @@ $(function(){
 				if($('#map').length > 0){
 					var mp = new BMap.Map('map');
 					mp.centerAndZoom(new BMap.Point(longitude, latitude), 17);
+					var marker = new BMap.Marker(point);  // 创建标注
+					mp.addOverlay(marker); 
 				}else{
 					alert('地图不存在')
 				}
