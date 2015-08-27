@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :greenbelts
+
   namespace :admin do
     resources :greenbelts
     resources :supervisors
