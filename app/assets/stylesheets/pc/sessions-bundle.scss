@@ -1,0 +1,20 @@
+body.pc{
+  .login-panel{
+    height: 307px;
+    position: absolute;
+    margin: auto;
+    top: 0px;
+    bottom: 200px;
+    left: 0px;
+    right: 0px;
+    .text-danger{
+      display:none;
+    }
+    .forget{
+        display:block;
+        text-align:right;
+        padding-top:15px;
+        text-decoration: none;
+    }
+  } 
+}

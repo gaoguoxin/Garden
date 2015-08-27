@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>园林绿地智能监管系统</title>
+    <%= stylesheet_link_tag    'layout-pc', media: 'all' %>
+    <%= javascript_include_tag 'layout-pc' %>
+    <%= csrf_meta_tags %>
+    <%= yield :app_head %>
+  </head>
+  <body class='pc'>
+    <% if @current_user.present? %>
+      <% if @current_user.is_admin? %>
+        <%= render 'layouts/admin'%>
+      <% else %>
+        <%= render 'layouts/principal'%>  
+      <% end %>
+    <% else %>
+      <%= yield %>
+    <% end %>
+  </body>
+</html>

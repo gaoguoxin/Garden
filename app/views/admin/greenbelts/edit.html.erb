@@ -1,0 +1,13 @@
+<% content_for :app_head do %>
+  <%= stylesheet_link_tag 'admin/greenbelts-bundle', media: 'all' %>
+  <%= javascript_include_tag 'admin/greenbelts-bundle' %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <div class="col-xs-2 sidebar">
+    <ul class="nav nav-sidebar">
+      <li class='active'><a href="javascript:void(0);">绿地列表</a></li>
+      <li><a href="greenbelts/new">新增绿地</a></li>
+    </ul>
+  </div>   
+<% end %>

@@ -1,0 +1,31 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">园林绿地智能监管系统</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class='active'><a href="/admin/greenbelts">绿地台账</a></li>
+        <li><a href="#">监理人员</a></li>
+        <li><a href="#">监理任务</a></li>
+        <li><a href="#">问题反馈</a></li>
+        <li><a href="#">统计分析</a></li>
+        <li><a href="#">评价管理</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/logout"><span class="uname"><%= @current_user.try(:name) %></span><i class="glyphicon glyphicon-log-out"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+      <%= yield :sidebar %>   
+      <%= yield %>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<% content_for :app_head do %>
+  <%= stylesheet_link_tag 'admin/greenbelts-bundle', media: 'all' %>
+  <%= javascript_include_tag 'admin/greenbelts-bundle' %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <div class="col-xs-2 sidebar">
+    <ul class="nav nav-sidebar">
+      <li class='active'><a href="javascript:void(0);">绿地列表</a></li>
+      <li><a href="greenbelts/new">新增绿地</a></li>
+    </ul>
+  </div>   
+<% end %>
+
+<div class="col-xs-10 main">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>绿地编号</th>
+        <th>绿地名称</th>
+        <th>绿地范围</th>
+        <th>绿地面积</th>
+        <th>绿植种类</th>
+        <th>责任单位</th>
+        <th>联系人</th>
+        <th>联系人</th>
+        <th>操作</th>
+      </tr>
+    </thead> 
+    <tbody>
+      <% @greenbelts.each do |green| %>
+        <tr>
+          <td><%= green.code %></td>
+          <td><%= green.name %></td>
+          <td><%= green.description %></td>
+          <td><%= green.acreage %></td>
+          <td><%= green.gtype %></td>
+          <td><%= green.organization %></td>
+          <td>
+              <%= green.connects.first[:name]%><br>
+              <%= green.connects.first[:mobile]%><br>
+              <%= green.connects.first[:email]%><br>
+          </td>
+          <td>
+              <%= green.connects.last[:name]%><br>
+              <%= green.connects.last[:mobile]%><br>
+              <%= green.connects.last[:email]%><br>
+          </td>
+          <td>
+            <a class="btn btn-warning disable-btn" href="javascript:void(0);" role="button">禁用</a>
+            <a class="btn btn-primary" href="greenbelts/<%=green.id.to_s%>/edit" role="button">修改</a>
+          </td>          
+        </tr>
+      <% end %>
+    </tbody>   
+  </table>
+  <%= paginate @greenbelts %>
+</div>

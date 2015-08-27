@@ -1,0 +1,33 @@
+---
+default:
+  appid: wxdec30aa5914743f0
+  secret: 0ada869e7688e5f4eaef8850164366b7
+  token: villi2015wecharts
+  apikey: 'muqqxunwythkwfantfvyvkcyzsvielrw'
+  access_token: 
+  notify_url: http://villi.wenjuanba.com/notify
+  redirect_uri: http://villi.wenjuanba.com/villi/wecharts/auth
+production:
+  appid: wxdec30aa5914743f0
+  secret: 0ada869e7688e5f4eaef8850164366b7
+  token: villi2015wecharts
+  apikey: 'muqqxunwythkwfantfvyvkcyzsvielrw'
+  access_token: 
+  notify_url: http://villi.wenjuanba.com/notify
+  redirect_uri: http://villi.wenjuanba.com/villi/wecharts/auth
+staging:
+  appid: wxdec30aa5914743f0
+  secret: 0ada869e7688e5f4eaef8850164366b7
+  token: villi2015wecharts
+  apikey: 'muqqxunwythkwfantfvyvkcyzsvielrw'
+  access_token: 
+  notify_url: http://villi.wenjuanba.com/notify
+  redirect_uri: http://villi.wenjuanba.com/villi/wecharts/auth
+development:
+  appid: wxdec30aa5914743f0
+  secret: 0ada869e7688e5f4eaef8850164366b7
+  token: villi2015wecharts
+  apikey: 'muqqxunwythkwfantfvyvkcyzsvielrw'
+  access_token: 
+  notify_url: http://villi.wenjuanba.com/notify
+  redirect_uri: http://villi.wenjuanba.com/villi/wecharts/auth
