@@ -52,3 +52,9 @@ gem 'actionpack-xml_parser'
 gem 'mobile-fu'
 gem "simple-spreadsheet"
 gem 'ezcrypto'
+gem 'redis'
+gem 'sidekiq'
+gem "typhoeus"
+gem 'execjs'
+gem 'therubyracer'
+
