@@ -2,7 +2,7 @@
 //= require weixin
 $(function(){
 	wx.config({
-		debug: false,
+		debug: true,
 		appId: window.appid,
 		timestamp: window.timestamp,
 		nonceStr: window.noncestr,
