@@ -87,7 +87,7 @@ class User
   def self.get_wechart_info(openid)
     user                = self.where(openid:openid).first
     info_hash           = Wechart.get_user_info(openid)
-    user.nickname       = info_hash['nickname']
+    user.nick           = info_hash['nickname']
     user.sex            = info_hash['sex'].to_i
     user.country        = info_hash['country']
     user.province       = info_hash['province']
