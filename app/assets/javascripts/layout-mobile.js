@@ -38,7 +38,6 @@ $(function(){
 					mp.centerAndZoom(point, 17);
 					var marker = new BMap.Marker(point);// 创建标注
 					mp.addOverlay(marker);
-					marker.setAnimation(BMAP_ANIMATION_BOUNCE);
 				}else{
 					alert('地图不存在')
 				}

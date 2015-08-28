@@ -57,4 +57,4 @@ gem 'sidekiq'
 gem "typhoeus"
 gem 'execjs'
 gem 'therubyracer'
-
+gem 'whenever', :require => false
