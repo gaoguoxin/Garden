@@ -73,9 +73,9 @@ class User
 
   #微信关注
   def self.subscribe_from_wechart(opt)
-    Rails.logger.info '============================='
-    Rails.logger.info opt.inspect
-    Rails.logger.info '============================='
+    puts '============================='
+    puts opt.inspect
+    puts '============================='
     user = self.where(openid:opt["FromUserName"]).first
     unless user.present?
       user = self.create(openid:opt["FromUserName"])
