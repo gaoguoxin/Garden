@@ -71,7 +71,7 @@ class Wechart
 
 	# 获取 jsapi_ticket
 	def self.refresh_jsapi_ticket
-		uri 	= URI.parse("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=#{self.global_access_token}&type=jsapi")
+		uri 	= URI("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=#{self.global_access_token}&type=jsapi")
 		res 	= Net::HTTP.new(uri.host, uri.port)
 		res.use_ssl = true
 		res.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -105,7 +105,8 @@ class Wechart
 
 	# 根据用户openid获取该用户的基本信息
 	def self.get_user_info(openid)
-		uri   = URI("https://api.weixin.qq.com/cgi-bin/user/info?access_token=#{self.global_access_token}&openid=#{openid}&lang=zh_CN")
+		uri   = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=#{self.global_access_token}&openid=#{openid}&lang=zh_CN"
+		uri   = URI.parse(uri)
 		res   = Net::HTTP.new(uri.host, uri.port)
 		res.use_ssl = true
 		res.verify_mode = OpenSSL::SSL::VERIFY_NONE
