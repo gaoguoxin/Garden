@@ -38,7 +38,7 @@ $(function(){
 					mp.addOverlay(marker);
 				}		        
 				if($('#map').length > 0){
-					var mp = new BMap.Map('map');
+					var mp = new BMap.Map('map',{mapType: BMAP_HYBRID_MAP});
 					var point = new BMap.Point(longitude, latitude);
 					BMap.Convertor.translate(point,0,translateCallback);
 				}else{
