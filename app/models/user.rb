@@ -68,8 +68,8 @@ class User
     user = self.where(openid:openid).first
     Rails.logger.info "--------user:#{user.try(:id)}"
     unless user.present?
-      self.create(openid:openid,persona:CUSTOMER)
-      Rails.logger.info 'new user created'
+      user = self.create(openid:openid,persona:CUSTOMER)
+      Rails.logger.info user.inspect
       Rails.logger.info '------------------------'
     end
   end
