@@ -32,12 +32,16 @@ $(function(){
 		        var longitude = res.longitude; //经度
 		        var speed = res.speed; //速度，以米/每秒计
 		        var accuracy = res.accuracy; // 位置精度
+				function translateCallback(point){
+					alert(1);
+					mp.centerAndZoom(point, 17);
+					var marker = new BMap.Marker(point);
+					mp.addOverlay(marker);
+				}		        
 				if($('#map').length > 0){
 					var mp = new BMap.Map('map');
 					var point = new BMap.Point(longitude, latitude);
-					mp.centerAndZoom(point, 17);
-					var marker = new BMap.Marker(point);// 创建标注
-					mp.addOverlay(marker);
+					BMap.Convertor.translate(point,2,translateCallback);
 				}else{
 					alert('地图不存在')
 				}
