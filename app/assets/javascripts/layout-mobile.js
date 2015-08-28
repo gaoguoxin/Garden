@@ -32,7 +32,7 @@ $(function(){
 		        var longitude = res.longitude; //经度
 		        var speed = res.speed; //速度，以米/每秒计
 		        var accuracy = res.accuracy; // 位置精度
-				function translateCallback(point){
+				var translateCallback = function(point){
 					alert(1);
 					mp.centerAndZoom(point, 17);
 					var marker = new BMap.Marker(point);
@@ -47,5 +47,11 @@ $(function(){
 				}
 		    }
 		});
-	})	
+	})
+
+
+
+
+
+
 })
