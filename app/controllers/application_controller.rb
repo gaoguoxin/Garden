@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
           begin
             openid = Wechart.get_openid(code)
             set_openid_cookie(openid)
-            #WechartUser.generate({"FromUserName" => openid}) # 授权就创建用户
+            User.add_from_wechart(openid)
           rescue Exception => e
               render_500
           end

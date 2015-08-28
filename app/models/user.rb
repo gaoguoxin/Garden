@@ -13,10 +13,10 @@ class User
   SUBSCRIBE = 1  #已关注该公众账号
   UNSUBSCRIBE = 0 #未关注该公众账号
 
-  ADMIN      = 2 #系统管理员
-  PRINCIAL   = 4 #绿地负责人
-  SUPERVISOR = 8 #监督员
-
+  ADMIN      = 2  #系统管理员
+  PRINCIAL   = 4  #绿地负责人
+  SUPERVISOR = 8  #监督员
+  CUSTOMER   = 16 #普通用户 
   field :name,type:String  
   field :mobile,type:String  
   field :email,type:String  
@@ -62,6 +62,16 @@ class User
   #创建监督员(根据微信账户来更新)
   def self.create_supervisors
 
+  end
+
+  def self.add_from_wechart(openid)
+    user = self.where(openid:openid).first
+    Rails.logger.info "--------user:#{user.try(:id)}"
+    unless user.present?
+      self.create(openid:openid,persona:CUSTOMER)
+      Rails.logger.info 'new user created'
+      Rails.logger.info '------------------------'
+    end
   end
 
   #搜索监督员
