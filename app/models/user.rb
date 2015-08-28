@@ -80,7 +80,7 @@ class User
     unless user.present?
       user = self.create(openid:opt["FromUserName"])
     end
-    WechartJob.perform_later('subscribe',{openid:opt["FromUserName"]}) 
+    WechartJob.perform_later('subscribe',opt["FromUserName"]) 
   end
 
   #关注后异步获取微信个人信息
