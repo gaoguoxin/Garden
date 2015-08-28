@@ -75,7 +75,7 @@ class User
   def self.subscribe_from_wechart(opt)
     user = self.where(openid:opt["FromUserName"]).first
     unless user.present?
-      user = self.create(openid:opt["FromUserName"])
+      user = self.create(openid:opt["FromUserName"],persona:CUSTOMER)
     end
     WechartJob.perform_later('subscribe',opt["FromUserName"]) 
   end
@@ -93,10 +93,7 @@ class User
     user.headimgurl     = info_hash['headimgurl']
     user.subscribe_time = info_hash['subscribe_time'].to_i
     user.subscribe      = info_hash['subscribe'].to_i
-    user.save
-    puts '---------------------------------'
-    puts user.inspect
-    puts '---------------------------------'      
+    user.save     
   end
 
   #取消关注
