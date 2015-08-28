@@ -73,9 +73,6 @@ class User
 
   #微信关注
   def self.subscribe_from_wechart(opt)
-    puts '============================='
-    puts opt.inspect
-    puts '============================='
     user = self.where(openid:opt["FromUserName"]).first
     unless user.present?
       user = self.create(openid:opt["FromUserName"])
@@ -96,7 +93,10 @@ class User
     user.headimgurl     = info_hash['headimgurl']
     user.subscribe_time = info_hash['subscribe_time'].to_i
     user.subscribe      = info_hash['subscribe'].to_i
-    user.save      
+    user.save
+    puts '---------------------------------'
+    puts user.inspect
+    puts '---------------------------------'      
   end
 
   #取消关注
