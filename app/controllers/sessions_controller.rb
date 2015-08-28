@@ -44,24 +44,26 @@ class SessionsController < ApplicationController
   end
 
   def check_msg_type
-    msg_type = params[:xml][:MsgType]
-    case msg_type
-    when 'text'
-
-    when 'image'
-
-    when 'voice'
-
-    when 'video'
-
-    when 'shortvideo'
-
-    when 'location'
-
-    when 'link'
-
-    when 'event'
-      check_event
+    if params[:xml]
+      msg_type = params[:xml][:MsgType]
+      case msg_type
+      when 'text'
+  
+      when 'image'
+  
+      when 'voice'
+  
+      when 'video'
+  
+      when 'shortvideo'
+  
+      when 'location'
+  
+      when 'link'
+  
+      when 'event'
+        check_event
+      end      
     end
   end
 
