@@ -66,12 +66,40 @@ class User
 
   def self.add_from_wechart(openid)
     user = self.where(openid:openid).first
-    Rails.logger.info "--------user:#{user.try(:id)}"
     unless user.present?
       user = self.create(openid:openid,persona:CUSTOMER)
-      Rails.logger.info user.inspect
-      Rails.logger.info '------------------------'
     end
+  end
+
+  #微信关注
+  def self.subscribe_from_wechart(opt)
+    user = self.where(openid:opt["FromUserName"]).first
+    unless user.present?
+      user = self.create(openid:opt["FromUserName"])
+    end
+    WechartJob.perform_later('subscribe',{openid:opt["FromUserName"]}) 
+  end
+
+  #关注后异步获取微信个人信息
+  def self.get_wechart_info(openid)
+    user                = self.where(openid:openid).first
+    info_hash           = Wechart.get_user_info(openid)
+    user.nickname       = info_hash['nickname']
+    user.sex            = info_hash['sex'].to_i
+    user.country        = info_hash['country']
+    user.province       = info_hash['province']
+    user.city           = info_hash['city']
+    user.language       = info_hash['language']
+    user.headimgurl     = info_hash['headimgurl']
+    user.subscribe_time = info_hash['subscribe_time'].to_i
+    user.subscribe      = info_hash['subscribe'].to_i
+    user.save      
+  end
+
+  #取消关注
+  def self.unsubscribe(opt)
+    user = self.where(openid:opt["FromUserName"]).first
+    user.update_attributes(subscribe:UNSUBSCRIBE) if user.present?
   end
 
   #搜索监督员

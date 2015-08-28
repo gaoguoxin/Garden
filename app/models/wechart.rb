@@ -111,7 +111,7 @@ class Wechart
 		res.verify_mode = OpenSSL::SSL::VERIFY_NONE
 		res   = res.get(uri.request_uri)
 		res   = JSON.parse(res.body)
-		WechartUser.update_info(res)
+		return res
 	end
 
 	# 随机字符串

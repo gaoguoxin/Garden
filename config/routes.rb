@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :sessions do 
     collection do 
       get 're_dispatch'
+      post 'wechart_api'
     end
   end
 
