@@ -71,7 +71,7 @@ class Wechart
 
 	# 获取 jsapi_ticket
 	def self.refresh_jsapi_ticket
-		uri 	= URI("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=#{self.global_access_token}&type=jsapi")
+		uri 	= URI.parse("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=#{self.global_access_token}&type=jsapi")
 		res 	= Net::HTTP.new(uri.host, uri.port)
 		res.use_ssl = true
 		res.verify_mode = OpenSSL::SSL::VERIFY_NONE
