@@ -38,10 +38,7 @@ $(function(){
 					mp.addOverlay(marker);
 				}		        
 				if($('#map').length > 0){
-					var mapType1 = new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_HYBRID_MAP]})
-					var mp = new BMap.Map('map');
-					mp.addControl(mapType1);
-					mp.setCurrentCity("北京");
+					var mp = new BMap.Map('map',{mapType: BMAP_HYBRID_MAP});
 					var point = new BMap.Point(longitude, latitude);
 					BMap.Convertor.translate(point,0,translateCallback);
 				}else{
@@ -50,10 +47,4 @@ $(function(){
 		    }
 		});
 	})
-
-
-
-
-
-
 })
