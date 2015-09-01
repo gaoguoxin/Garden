@@ -1,7 +1,7 @@
 class Greenbelt
   include Mongoid::Document
   include Mongoid::Timestamps
-
+  include Mongoid::Geospatial
   paginates_per 50
 
   ROAD      = 0 #道路绿地
@@ -16,8 +16,8 @@ class Greenbelt
   field :code,type:Integer #绿地编码
   field :name,type:String #绿地名称
   field :address,type:String #绿地详细地址(经过地图得出)
-  field :position,type:Array #经纬度
-  field :polygons,type:Array #多边形拐点坐标
+  field :position,type:Point,sphere: true #经纬度
+  field :polygons,type:Polygon #多边形拐点坐标
   field :type,type:Integer,default:ROAD #绿地类型(道路、小区、河湖、公园)	
   field :description,type:String #绿地范围描述信息
   field :acreage,type:BigDecimal #绿地面积
@@ -26,7 +26,7 @@ class Greenbelt
   field :connects,type:Array #联系人及联系方式[{name:'xx',mobile:'xx',email:'xx'}]
   field :status,type:Integer,default:ENABLE
 
-  index({position: '2d'}, background: true)
+  index({ position: "2dsphere"}, { background: true })
 
   after_create :generate_principal
 
@@ -94,6 +94,11 @@ class Greenbelt
     return '小区绿地' if type == COMMUNITY
     return '河湖绿地' if type == LAKE
     return '公园绿地' if type == PARK    
+  end
+  
+  #self.nearby([117.490219, 40.962954])  
+  def self.nearby(coordinate,max_distance=3)
+    self.geo_near(coordinate).max_distance(max_distance)
   end
 
 end

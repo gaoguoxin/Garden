@@ -58,3 +58,5 @@ gem "typhoeus"
 gem 'execjs'
 gem 'therubyracer'
 gem 'whenever', :require => false
+gem 'mongoid-geospatial'
+gem 'GeoRuby', '~> 1.3.4'
