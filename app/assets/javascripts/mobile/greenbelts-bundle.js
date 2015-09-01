@@ -1,8 +1,8 @@
 $(function(){
 	$('.re-check').click(function(){
-		$('.re-check-modal').modal('show')
+		$('.re-check-modal').modal('show');
 	})
 	$('.new-feedback').click(function(){
-		$('.new-feed-modal').modal('show')
+		$('.new-feed-modal').modal('show');
 	})
 })
