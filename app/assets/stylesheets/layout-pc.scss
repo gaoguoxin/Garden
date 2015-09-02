@@ -1,9 +1,112 @@
 //= require global
 //= require drawing
 body.pc{
-	ul.navbar-right{
-		.uname{
-			margin-right:15px;
+	.welcome-head{ 
+		height:40px;
+		line-height:40px;
+		width:100%;
+		font-size:14px;
+		color:#ffffff;
+		background-color:#282828;
+		position:absolute;
+		z-index:11;
+		.welcome-left{
+			margin:0 20px;
+			float:left;
+		}
+		.welcome-right{
+			flaot:right;
+			margin-right:20px;
+			height:40px;
+			line-height:40px;
+			.welcome-logout{
+				float:right;
+				color:#eaad18;
+				margin-left:20px;
+			}
+			.welcome-username{
+				float:right;
+				margin-left:20px;
+			}
+			.welcome-setting{
+				float:right;
+				margin-left:20px;
+				size:14px;
+				top:12px;
+			}
+			.welcome-msg{
+				float:right;
+				size:14px;
+				top:12px;
+				.msg-num{
+					padding: 1px 5px 2px 4px;
+					margin-left: -20px;
+    				margin-top: -24px;
+    				font-size: 8px;
+		   			line-height: 10px;
+		   			background-color:#dd3636;
+				}
+			}
 		}
 	}
+
+	.nav-left{
+			z-index:11;
+			position:absolute;  
+			margin-top:40px;
+			border-radius: 0;
+			border:0;
+			height:100px;
+			width:303px;
+			background-color:#324752;
+			overflow:hidden;
+		.nav-img{
+			width:60px;
+			height:60px;
+			margin:20px 10px 20px 20px;
+			float:left;
+		}
+		p{
+			color:#FFFFFF;
+			font-family:"微软雅黑";
+			font-size:18px;
+			float:left;
+			line-height:28px;
+			margin-top:22px;
+		}
+	}
+		.nav-right{
+			margin-top:40px;
+			padding-left:303px;
+			height:100px;
+			width:100%;
+			float:left;
+			background-color:#3fae83;
+
+			li{
+				line-height:100px;
+				padding:0;
+				margin:0 auto;
+				float:left; 
+				width:15%; 
+				border-right:0;
+			}
+			.active{
+				background-color:#258e63;
+			}
+			a{
+				padding:0;
+				margin:0 auto;
+				line-height:100px;
+				border-right:0;
+				text-align:center;
+				color:#FFFFFF;
+				font-family:"微软雅黑";
+				font-size:18px;
+				&:hover{
+					line-height:100px;
+					background-color:#258e63;
+				}
+			}
+		}
 }

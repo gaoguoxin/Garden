@@ -1,23 +1,60 @@
 body{
-  padding-top:50px;
-  .sidebar{
+  .sidebar{    
     position: fixed;
-    top: 51px;
+    top: 0px;
+    padding-top:140px;
     bottom: 0;
     left: 0;
-    z-index: 1000;
     display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-color: #f5f5f5;
-    border-right: 1px solid #eee;
+    padding: 140px 0px 20px 0px;
+    width:303px;
+    background-color: #303b4c;
+    border: 0;
+
+    li{
+      font-size:16px;
+      color:#9ea9ba;
+      height:80px;
+      line-height:60px;
+      width:303px;
+      border-left:8px solid #303b4c;
+      text-align:center;     
+      a{
+        font-size:16px;
+        color:#9ea9ba;
+        height:80px;
+        line-height:60px;
+        width:295px;
+        text-align:center;
+        &:hover{
+          background-color:#2a323f;
+        }
+      }
+    }
+    span{
+      float:right;
+      size: 14px;
+      line-height: 60px;
+      margin-right: 40px;
+    }
+    .active{
+      color:#74849a;
+      background-color:#2a323f;
+      border-left:8px solid #3fea83;
+      width:303px;
+    }
+    .nav-title{
+      border-bottom:1px solid #38485e; 
+      line-height:80px; 
+      margin-left: -30px;
+    }
   }
   .main{
+    margin-top:400px;
     padding:20px;
     float:right;
     #map{
       min-height:630px;
     }
-  }	
+  }
 }
