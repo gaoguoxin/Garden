@@ -49,8 +49,38 @@ body{
       margin-left: -30px;
     }
   }
+
+  .main-pannel{
+    margin-left:303px;
+    margin-top: 140px;
+    background-color:#edf0f4;
+    overflow:hidden;
+    .main-inner{
+      margin:20px 20px;
+      background-color:#FFFFFF;
+      border:1px solid #cfd8e5;
+      .main-search{
+        width:100%;
+        .main-input{ 
+          float:right;
+          height:30px; 
+          margin-top:20px;
+          margin-right:30px;  
+          width:300px ;   
+          border:1px solid #cfd8e5;
+        }
+      }
+      .main-table{
+        margin:20px 30px 30px 30px;
+        border:1px solid #a7b4c4;
+      }
+    }
+    #map{
+      min-height:630px;
+    }
+  }
   .main{
-    margin-top:400px;
+    margin-top:100px;
     padding:20px;
     float:right;
     #map{
