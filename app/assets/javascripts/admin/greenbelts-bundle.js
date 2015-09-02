@@ -5,11 +5,11 @@ $(function(){
     	map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_SATELLITE_MAP ]}));         
     	map.setCurrentCity("北京");
 
-
-		var overlaycomplete = function(e){
-    	    drawingManager.close();
-			console.log(BMapLib.GeoUtils.getPolygonArea(e.overlay))
-    	};
+		// var overlaycomplete = function(e){
+  //   	    drawingManager.close();
+  //   	    console.log(e.overlay)
+		// 	//console.log(BMapLib.GeoUtils.getPolygonArea(e.overlay))
+  //   	};
     	var styleOptions = {
     	    strokeColor:"red",
     	    fillColor:"red",
@@ -29,6 +29,8 @@ $(function(){
     	    },
     	    polygonOptions:styleOptions
     	});  
-    	drawingManager.addEventListener('overlaycomplete', overlaycomplete);    	    	
+    	drawingManager.addEventListener('polygoncomplete', function(e,overlay){
+    		var paths = overlay.getPath();
+    	});    	    	
 	}
 })

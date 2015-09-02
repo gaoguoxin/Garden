@@ -3,50 +3,30 @@
   <%= javascript_include_tag 'pc/sessions-bundle'%>
 <% end %>
 <div class="container login-panel">
-    <div class="row">
-        <div class="col-xs-2 col-sm-3 col-md-3 col-lg-4"></div>
-        <div class="col-xs-8 col-sm-6 col-md-6 col-lg-4 login_info">
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-log-4"></div>
-                <%=image_tag 'logo.png', class:'col-xs-4 col-sm-4 col-md-4 col-log-4'%>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-log-4"></div>
+  <div class="col-md-4 col-md-offset-4">
+    <div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="panel-title"><strong>登录</strong></h1>
             </div>
-            <div class="row">
-                <p class="hidden-xs">海淀区园林绿地智能监管系统</p>
-                <p class="smallp visible-xs">海淀区园林绿地智能监管系统</p>
+
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label for="mobile">手机<span class="text-danger">(账号不存在)</span></label>
+                        <input type="text" name="mobile"class="form-control" id="mobile" placeholder="请输入手机号"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">密码<span class="text-danger">(密码不正确)</span></label>
+                        <input type="password" name="password" class="form-control" id="pwd" placeholder="请输入密码"/>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-primary login-btn">登录</button>
+                    <div>
+                      <a href="/forget" class='forget'>忘记密码?</a>
+                    </div>
+                </form>
             </div>
-            <form>
-                <div class="row">                
-                    <div class="col-xs-1 col-sm-2 col-md-2 col-log-2"></div>
-                    <div class="input-group input_group col-xs-10 col-sm-8 col-md-8 col-log-8">
-                        <span class="glyphicon glyphicon-lock login_left input-group-addon" aria-hidden="true"></span>
-                        <input type="text" name="mobile" id="mobile" class="form-control login_right " placeholder="请输入手机号" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="col-xs-1 col-sm-2 col-md-2 col-log-2"></div>
-                </div>
-                <div class="row">                
-                    <div class="col-xs-1 col-sm-2 col-md-2 col-log-2"></div>
-                    <div class="input-group input_group col-xs-10 col-sm-8 col-md-8 col-log-8 ">
-                        <span class="glyphicon glyphicon-lock login_left input-group-addon" aria-hidden="true"></span>
-                        <input type="password" name="password" id="pwd"  class="form-control login_right" placeholder="请输入密码" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="col-xs-1 col-sm-2 col-md-2 col-log-2"></div>
-                </div>
-                <div class="row ">                
-                    <div class="col-xs-1 col-sm-2 col-md-2 col-log-2"></div>
-                    <div class="col-xs-10 col-sm-8 col-md-8 col-log-8 div_button">
-                        <button class="btn login_button" type="button">登录</button>
-                    </div>
-                </div>
-                <div class="row ">                
-                    <div class="col-xs-1 col-sm-2 col-md-2 col-log-2"></div>
-                    <div class="col-xs-10 col-sm-8 col-md-8 col-log-8">
-                        <a href="#" class="miss_password">忘记密码</a>
-                    </div>
-                    <div class="col-xs-1 col-sm-2 col-md-2 col-log-2"></div>
-                </div>
-            </form>
         </div>
-        <div class="col-xs-2 col-sm-3 col-md-3 col-lg-4"></div>
     </div>
+  </div>
 </div>
