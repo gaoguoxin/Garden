@@ -38,6 +38,27 @@ body.pc{
                 font-size:20px;
                 margin:0 0 20px 0;
             }
+            .warning_div{
+                display:none;            
+            }
+            .warning_msg{
+                line-height:20px;
+                border-color:1px solid #ffe57d;
+                background-color:#fff6d2;
+
+                .warning_text{
+                    font-size:12px;
+                    color:#3c3d3d; 
+                    float:left;
+
+                    .warning_img{
+                        color:#ffe57d; 
+                        top: 1px;
+                        margin-right: 10px;                  
+                    }
+                }                
+            }
+
             .input_group{
                 line-height:30px;
                 padding-top:20px;
