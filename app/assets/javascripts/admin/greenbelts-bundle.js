@@ -1,10 +1,10 @@
 $(function(){
 	if($('#map').length > 0 ){
     	var map = new BMap.Map("map", { mapType: BMAP_HYBRID_MAP,enableMapClick:false });  
-    	map.centerAndZoom(new BMap.Point(116.30, 39.96), 14);
     	map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_SATELLITE_MAP ]}));         
     	map.setCurrentCity("北京");
 
+    	//设置多边形样式
     	var styleOptions = {
     	    strokeColor:"red",
     	    fillColor:"red",
@@ -13,6 +13,25 @@ $(function(){
     	    fillOpacity: 0.6,
     	    strokeStyle: 'solid'
     	}
+
+    	//如果某块绿地已经做过地图标记则显示
+    	if(window.p_center[0] && window.p_center[1]){
+    		var marker = new BMap.Marker(new BMap.Point(window.p_center[0], window.p_center[1]));
+    		map.centerAndZoom(new BMap.Point(window.p_center[0], window.p_center[1]), 14);
+    		map.addOverlay(marker); 
+    		marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+    		var lines = [];
+    		$.each(window.polygons,function(){
+    			var lng = this[0];
+    			var lat = this[1];
+    			lines.push(new BMap.Point(lng, lat));
+    		})
+			var polyline = new BMap.Polygon(lines,styleOptions);
+			map.addOverlay(polyline);
+    	}else{
+    		map.centerAndZoom(new BMap.Point(116.30, 39.96), 14);
+    	}
+
 
     	var drawingManager = new BMapLib.DrawingManager(map, {
     	    isOpen: false,
@@ -27,12 +46,46 @@ $(function(){
     	drawingManager.addEventListener('polygoncomplete', function(e,overlay){
 			var removeOlerlay = function(e,ee,overlay){
 				map.removeOverlay(overlay);
+				window.pgs = [];
 			}
 			var markerMenu=new BMap.ContextMenu();
 			markerMenu.addItem(new BMap.MenuItem('删除',removeOlerlay.bind(overlay)));
 			overlay.addContextMenu(markerMenu);
-
-			var paths = overlay.getPath();
+			window.pgs = [];
+			var polygons = overlay.getPath();
+			$.each(polygons,function(k,v){
+				window.pgs.push([v.lng,v.lat])
+			})
     	});    	    	
 	}
+
+	$('.green_type').click(function(){
+		var t   = $(this).data('type');
+		var txt = $(this).text();
+		$('#greenbelt_type').val(t)
+		$('#dropdownMenu1 span.type').text(txt)	
+	})
+	
+	$('.btn-block').click(function(e){
+		e.preventDefault();
+		var connects = [
+			{name:$.trim($('#contact1').val()),mobile:$.trim($('#mobile1').val()),email:$.trim($('#email1').val())},
+			{name:$.trim($('#contact2').val()),mobile:$.trim($('#mobile2').val()),email:$.trim($('#email2').val())}
+		];
+		var gid = window.location.href.split('greenbelts/')[1].split('/')[0];
+		data = {
+			name:$.trim($('#greenbelt_name').val()),
+			acreage:$.trim($('#greenbelt_acreage').val()),
+			type:$('#greenbelt_type').val(),
+			plants:$.trim($('#greenbelt_plants').val()),
+			description:$.trim($('#greenbelt_description').val()),
+			organization:$.trim($('#greenbelt_organization').val()),
+			connects:connects,
+			polygons:window.pgs.length > 0  ?  window.pgs : window.polygons
+			 
+		}
+		$.post('/admin/greenbelts/change',{id:gid,greenbelt:data},function(retval){
+			console.log(retval)
+		})
+	})
 })

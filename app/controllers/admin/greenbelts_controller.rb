@@ -1,5 +1,5 @@
 class Admin::GreenbeltsController < Admin::AdminController
-  before_filter :set_greenbelt,only:[:edit,:update]
+  before_action :set_greenbelt, only: [:show, :edit, :change, :destroy]
   def index
     @greenbelts = Greenbelt.admin_search(params[:page],params[:name])
   end
@@ -10,8 +10,9 @@ class Admin::GreenbeltsController < Admin::AdminController
   def edit
   end
 
-  def update
-    @greenbelt.update_attributes(params[:greenbelt])
+  def change
+    render_json @greenbelt.update_info(params['greenbelt'])
+
   end
 
   private
@@ -19,4 +20,9 @@ class Admin::GreenbeltsController < Admin::AdminController
   def set_greenbelt
     @greenbelt = Greenbelt.where(id:params[:id]).first
   end
+
+  def greenbelt_params
+    params.require(:greenbelt).permit(:name)
+  end
+
 end
