@@ -1,6 +1,6 @@
 $(function(){
 	$('.login-panel input').focus(function(){
-		$('#warning_div').css("display","none");
+		$('#warning_div').css("visibility","hidden");
 	});
 	$('#login-btn').click(function(e){
 		e.preventDefault();
@@ -12,10 +12,10 @@ $(function(){
 					window.location.href = '/';
 				}else{
 					if(retval.data == 'error_01'){
-						$('#warning_div').css("display","block");
+						$('#warning_div').css("visibility","visible");
 						//$('.text-danger:first').show();
 					}else{
-						$('#warning_div').css("display","block");
+						$('#warning_div').css("visibility","visible");
 						//$('.text-danger:last').show();
 					}
 				}
@@ -34,10 +34,10 @@ $(function(){
 						window.location.href = '/';
 					}else{
 						if(retval.data == 'error_01'){
-							$('#warning_div').css("display","block");
+							$('#warning_div').css("visibility","visible");
 							//$('.text-danger:first').show();
 						}else{
-							$('#warning_div').css("display","block");
+							$('#warning_div').css("visibility","visible");
 							//$('.text-danger:last').show();
 						}
 					}
