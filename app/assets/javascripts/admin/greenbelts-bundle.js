@@ -25,7 +25,6 @@ $(function(){
     	    polygonOptions:styleOptions
     	});  
     	drawingManager.addEventListener('polygoncomplete', function(e,overlay){
-    		var paths = overlay.getPath();
 			var removeOlerlay = function(e,ee,overlay){
 				map.removeOverlay(overlay);
 			}
@@ -33,6 +32,7 @@ $(function(){
 			markerMenu.addItem(new BMap.MenuItem('删除',removeOlerlay.bind(overlay)));
 			overlay.addContextMenu(markerMenu);
 
+			var paths = overlay.getPath();
     	});    	    	
 	}
 })
