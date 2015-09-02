@@ -5,10 +5,6 @@ body.pc{
         overflow:hidden;
         background:image-url("background.png") no-repeat;
 
-        .text-danger{
-            display:none;
-        }
-
         .login_info {   
             margin:100px 0;
             overflow:hidden;
@@ -30,20 +26,22 @@ body.pc{
                 font-family: 黑体;
                 font-size:28px;
                 color:#ffffff;
-                margin:0 0 20px 0;
+                margin:0 0 10px 0;
             }
+            /*
             .smallp{
                 position:relative;
                 font-family: 黑体;
                 font-size:20px;
                 margin:0 0 20px 0;
-            }
+            }*/
             .warning_div{
-                display:none;            
+                visibility:hidden; 
+                margin-top:-10px;           
             }
             .warning_msg{
                 line-height:20px;
-                border-color:1px solid #ffe57d;
+                border:1px solid #ffe57d;
                 background-color:#fff6d2;
 
                 .warning_text{
@@ -61,7 +59,7 @@ body.pc{
 
             .input_group{
                 line-height:30px;
-                padding-top:20px;
+                padding:10px 0;
             }
             .login_left{
                 border:1px solid #FFF;
@@ -82,7 +80,7 @@ body.pc{
             }
             .login_button{
                 line-height:14px;
-                margin:20px 0 14px 0;
+                margin:10px 0 14px 0;
                 height:30px;
                 width:100%;
                 background-color:#FFF;
