@@ -14,6 +14,7 @@
   </div>   
 <% end %>
 <div class="main-pannel">
+<<<<<<< HEAD
 <div class="main-search">
     <button><span class="glyphicon glyphicon-search" ></span></button>
     <input type="text" class="main-input" placeholder="请输入绿地名称" />
@@ -62,4 +63,72 @@
   </table>
   </div>
   <%= paginate @greenbelts %>
+=======
+  <div class="main-inner">
+    <div class="main-search">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="gcode">绿地编号</label>
+          <input type="text" name="code" class="form-control" id="gcode" placeholder="绿地编号">
+        </div>  
+        <div class="form-group">
+          <label for="gname">绿地名称</label>
+          <input type="text" name="name" class="form-control" id="gname" placeholder="绿地名称">
+        </div>
+        <div class="form-group">
+          <label for="gorigin">责任单位</label>
+          <input type="text" name="organization" class="form-control" id="gorigin" placeholder="责任单位">
+        </div>  
+        <button type="submit" class="btn btn-primary">开始查找</button>
+      </form>
+    </div>
+    <div class="main-table">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>绿地编号</th>
+            <th>绿地名称</th>
+            <th>绿地范围</th>
+            <th>绿地面积</th>
+            <th>绿植种类</th>
+            <th>责任单位</th>
+            <th>联系人</th>
+            <th>联系人</th>
+            <th>操作</th>
+          </tr>
+        </thead> 
+        <tbody>
+          <% @greenbelts.each do |green| %>
+            <tr>
+              <td><%= green.code %></td>
+              <td><%= green.name %></td>
+              <td><%= green.description %></td>
+              <td><%= green.acreage %></td>
+              <td><%= green.gtype %></td>
+              <td><%= green.organization %></td>
+              <td>
+                  <%= green.connects.first[:name]%><br>
+                  <%= green.connects.first[:mobile]%><br>
+                  <%= green.connects.first[:email]%><br>
+              </td>
+              <td>
+                  <%= green.connects.last[:name]%><br>
+                  <%= green.connects.last[:mobile]%><br>
+                  <%= green.connects.last[:email]%><br>
+              </td>
+              <td>
+                <a class="btn btn-warning disable-btn" href="javascript:void(0);" role="button">禁用</a>
+                <a class="btn btn-primary" href="greenbelts/<%=green.id.to_s%>/edit" role="button">修改</a>
+              </td>          
+            </tr>
+          <% end %>
+        </tbody>   
+      </table>
+    </div>
+    <div class="page text-right">
+      <%= paginate @greenbelts,:theme => 'twitter-bootstrap-3',:params =>{code:params[:code],name:params[:name],organization:params[:organization]} %>
+    </div>
+    
+  </div>
+>>>>>>> 7a1e6bd05cb44c7d66d1a775ac9f51455179a4b2
 </div>

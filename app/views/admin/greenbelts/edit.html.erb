@@ -1,6 +1,10 @@
 <% content_for :app_head do %>
   <%= stylesheet_link_tag 'admin/greenbelts-bundle', media: 'all' %>
   <%= javascript_include_tag 'admin/greenbelts-bundle' %>
+  <script type='text/javascript'>
+  	window.polygons = <%= raw @greenbelt.polygons.to_json %>;
+  	window.p_center = <%= raw [@greenbelt.position.try(:x),@greenbelt.position.try(:y)].to_json %>;
+  </script>
 <% end %>
 
 <% content_for :sidebar do %>
@@ -15,13 +19,81 @@
 
 <div class="col-xs-10 main">
 	<div class="row explain">
-		<p>操作说明:</p>
-		<p>1、选择小手可以进行拖拽地图</p>
-		<p>2、选择多边形以进行圈地</p>
-		<p>3、双击鼠标圈地结束</p>
-		<p>4、在所圈范围上右键可以取消所圈绿地</p>		
+		<p>1、选择小手可以进行拖拽地图.选择多边形以进行圈地.双击鼠标圈地结束</p>
+		<p>2、在所圈范围上右键可以取消所圈绿地</p>	
 	</div>
 	<div class="row">
 		<div class="col-xs-12" id='map'></div>
 	</div>
+
+
+	<div class="row">
+		<%= form_for([:admin,@greenbelt],:html => {:class => 'form-horizontal'}) do |f| %>
+		  <%= f.hidden_field :type %>
+		  <%= f.hidden_field :polygons %>
+		  <div class="form-group">
+		    <label for="name" class="col-xs-1 control-label">绿地名称</label>
+		    <div class="col-xs-5">
+		      <%= f.text_field :name,:class => 'form-control',:placeholder => '绿地名称' %>	
+		    </div>
+		    <label for="acreage" class="col-xs-1 control-label">绿地面积</label>
+		    <div class="col-xs-5">
+		      <%= f.text_field :acreage,:class => 'form-control',:placeholder => '绿地面积' %>
+		    </div>		    	    
+		  </div>
+		  <div class="form-group">
+		    <label for="type" class="col-xs-1 control-label">绿地类型</label>
+		    <div class="col-xs-5">
+				<div class="dropdown">
+  					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+  						<span class="type"><%= @greenbelt.gtype || '绿地类型' %></span>
+  						<span class="caret"></span>
+  					</button>
+  					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+  					  <% Greenbelt::TYPES.each_with_index do |type,idx|%>
+  					    <li><a href="javascript:void(0);" class="green_type" data-type=<%= idx %> ><%=type%></a></li>
+  					  <% end %>
+  					</ul>
+				</div>
+		    </div>			  
+		    <label for="type" class="col-xs-1 control-label">绿植种类</label>
+		    <div class="col-xs-5">
+		      <%= f.text_field :plants,:class => 'form-control',:placeholder => '绿植种类' %>
+		    </div>
+		  </div>		  
+		  <div class="form-group">
+		  	<label for="description" class="col-xs-1 control-label">绿地范围</label>
+		  	<div class="col-xs-11">
+		  	    <%= f.text_area :description,:class => 'form-control',:placeholder => '绿地范围' %>
+		  	</div>
+		  </div>
+		  <div class="form-group">
+		    <label for="organization" class="col-xs-1 control-label">责任单位</label>
+		    <div class="col-xs-11">
+		      <%= f.text_field :organization,:class => 'form-control',:placeholder => '责任单位' %>
+		    </div>		    
+		  </div>
+		  <% @greenbelt.connects.each_with_index do |connect,idx| %>
+		  	<div class="form-group">
+		  	  <label for="contact1" class="col-xs-1 control-label">联系人</label>
+		  	  <div class="col-xs-3">
+		  	    <input type="text" class="form-control" id="contact<%=idx + 1%>" name="greenbelt[connects][name]" value="<%= connect[:name]%>" placeholder="联系人">
+		  	  </div>
+		  	  <label for="mobile1" class="col-xs-1 control-label">手机</label>
+		  	  <div class="col-xs-3">
+		  	    <input type="text" class="form-control" id="mobile<%=idx + 1%>" name="greenbelt[connects][mobile]" value="<%= connect[:mobile]%>" placeholder="手机">
+		  	  </div>	
+		  	  <label for="email1" class="col-xs-1 control-label">邮箱</label>
+		  	  <div class="col-xs-3">
+		  	    <input type="text" class="form-control" id="email<%=idx + 1%>" name="greenbelt[connects][email]" value="<%= connect[:email]%>" placeholder="邮箱">
+		  	  </div>		    	    
+		  	</div>		  
+		  <% end %>		  		  
+		  <div class="form-group">
+		    <div class="col-xs-offset-1 col-xs-11">
+		      <button type="submit" class="btn btn-primary btn-block">提交</button>
+		    </div>
+		  </div>
+		<% end %>	
+	</div>	
 </div>

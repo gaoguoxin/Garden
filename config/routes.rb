@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   resources :greenbelts
 
   namespace :admin do
-    resources :greenbelts
+    resources :greenbelts do 
+      collection do 
+        post 'change'
+      end
+    end
     resources :supervisors
   end
 

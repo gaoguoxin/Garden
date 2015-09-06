@@ -2,12 +2,13 @@ class Greenbelt
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Geospatial
-  paginates_per 50
+  paginates_per 10
 
   ROAD      = 0 #道路绿地
   COMMUNITY = 1 #小区绿地
   LAKE      = 2 #河湖绿地
   PARK      = 3 #公园绿地 
+  TYPES     = ['道路绿地','小区绿地','河湖绿地','公园绿地']
 
   ENABLE    = 1 #可用
   DISABLE   = 0 #不可用
@@ -20,15 +21,16 @@ class Greenbelt
   field :polygons,type:Polygon #多边形拐点坐标
   field :type,type:Integer,default:ROAD #绿地类型(道路、小区、河湖、公园)	
   field :description,type:String #绿地范围描述信息
-  field :acreage,type:BigDecimal #绿地面积
+  field :acreage,type:Float #绿地面积
   field :plants,type:String #绿植
   field :organization,type:String #责任单位或组织
-  field :connects,type:Array #联系人及联系方式[{name:'xx',mobile:'xx',email:'xx'}]
+  field :connects,type:Array #联系人及联系方式
   field :status,type:Integer,default:ENABLE
 
   index({ position: "2dsphere"}, { background: true })
 
   after_create :generate_principal
+  before_save  :get_position
 
   default_scope -> {where(status:ENABLE).order_by(created_at:'asc')}
 
@@ -70,11 +72,17 @@ class Greenbelt
     return arr
   end
 
-  def self.admin_search(page=1,name=nil)
+  def self.admin_search(page=1,opt=nil)
   	greenbelts = self.all
-  	if page.present?
-  	  greenbelts = greenbelts.where(name:/#{name}/)
+  	if opt['code'].present?
+  	  greenbelts = greenbelts.where(code:opt['code'].to_i)
   	end
+    if opt['name'].present?
+      greenbelts = greenbelts.where(name:/#{opt['name']}/)
+    end
+    if opt['organization'].present?
+      greenbelts = greenbelts.where(organization:/#{opt['organization']}/)
+    end
     greenbelts.page(page)
   end
 
@@ -82,10 +90,36 @@ class Greenbelt
     self.page(1)
   end
 
+  def self.nearby(coordinate,max_distance=3)
+    self.geo_near(coordinate).max_distance(max_distance)
+  end  
+
   #创建责任人
   def generate_principal
     self.connects.each do |connect|
       User.create_principal(connect[:name],connect[:mobile],connect[:email])
+    end
+  end
+
+  def update_info(opt)  
+    opt['polygons']   = opt['polygons'].to_hash.values.map{|arr|[arr[0].to_f,arr[1].to_f]}
+    opt['connects']   = opt['connects'].to_hash.values
+    self.name         = opt['name']
+    self.acreage      = opt['acreage'].to_f
+    self.type         = opt['type'].to_i  
+    self.plants       = opt['plants']
+    self.description  = opt['description']
+    self.organization = opt['organization']
+    self.connects     = opt['connects']
+    self.polygons     = opt['polygons']
+    self.save
+    return self
+  end
+
+  def get_position
+    if self.polygons.length > 0  
+      center = self.polygons.center
+      self.position = center
     end
   end
 
@@ -95,10 +129,7 @@ class Greenbelt
     return '河湖绿地' if type == LAKE
     return '公园绿地' if type == PARK    
   end
-  
-  #self.nearby([117.490219, 40.962954])  
-  def self.nearby(coordinate,max_distance=3)
-    self.geo_near(coordinate).max_distance(max_distance)
-  end
+   
+
 
 end
