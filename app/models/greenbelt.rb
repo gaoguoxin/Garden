@@ -122,7 +122,7 @@ class Greenbelt
   end
 
   def get_position
-    if self.polygons.length > 0  
+    if self.polygons && self.polygons.length > 0  
       center = self.polygons.center
       self.position = center
     else
