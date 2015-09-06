@@ -72,33 +72,33 @@ $(function(){
 
 
 		// test code start
-		var mp = new BMap.Map('map',{mapType: BMAP_HYBRID_MAP});
-		var point = new BMap.Point(116.34103, 39.9928255);
-		mp.centerAndZoom(point, 17);
-		var marker = new BMap.Marker(point);
-		mp.addOverlay(marker);
+		// var mp = new BMap.Map('map',{mapType: BMAP_HYBRID_MAP});
+		// var point = new BMap.Point(116.34103, 39.9928255);
+		// mp.centerAndZoom(point, 17);
+		// var marker = new BMap.Marker(point);
+		// mp.addOverlay(marker);
 
-    	var styleOptions = {
-    	    strokeColor:"red",
-    	    fillColor:"red",
-    	    strokeWeight: 3,
-    	    strokeOpacity: 0.8,
-    	    fillOpacity: 0.6,
-    	    strokeStyle: 'solid'
-    	}
+  //   	var styleOptions = {
+  //   	    strokeColor:"red",
+  //   	    fillColor:"red",
+  //   	    strokeWeight: 3,
+  //   	    strokeOpacity: 0.8,
+  //   	    fillOpacity: 0.6,
+  //   	    strokeStyle: 'solid'
+  //   	}
 
-		$.get('/greenbelts/nearby',{lng:116.34103,lat:39.9928255},function(res){
-			$.each(res.data,function(idx,d){
-    			var lines = [];
-    			$.each(d.polygons,function(){
-    				var lng = this[0];
-    				var lat = this[1];
-    				lines.push(new BMap.Point(lng, lat));
-    			})
-				var polyline = new BMap.Polygon(lines,styleOptions);
-				mp.addOverlay(polyline);
-			})
-		})
+		// $.get('/greenbelts/nearby',{lng:116.34103,lat:39.9928255},function(res){
+		// 	$.each(res.data,function(idx,d){
+  //   			var lines = [];
+  //   			$.each(d.polygons,function(){
+  //   				var lng = this[0];
+  //   				var lat = this[1];
+  //   				lines.push(new BMap.Point(lng, lat));
+  //   			})
+		// 		var polyline = new BMap.Polygon(lines,styleOptions);
+		// 		mp.addOverlay(polyline);
+		// 	})
+		// })
 		// test code end
 	
 
