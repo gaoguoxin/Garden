@@ -1,21 +1,25 @@
 //= require global
 //= require drawing
 body.pc{
+	
+             background-color:#edf0f4;
 	.welcome-head{ 
+		position:fixed;
+		top:0px;
+		left:0px;
 		height:40px;
 		line-height:40px;
 		width:100%;
+		min-width:1264px;
 		font-size:14px;
 		color:#ffffff;
 		background-color:#282828;
-		position:absolute;
 		z-index:11;
 		.welcome-left{
 			margin:0 20px;
 			float:left;
 		}
 		.welcome-right{
-			flaot:right;
 			margin-right:20px;
 			height:40px;
 			line-height:40px;
@@ -52,8 +56,9 @@ body.pc{
 
 	.nav-left{
 			z-index:11;
-			position:absolute;  
-			margin-top:40px;
+			position:fixed;  
+			top:40px;
+			left:0px;
 			border-radius: 0;
 			border:0;
 			height:100px;
@@ -75,38 +80,42 @@ body.pc{
 			margin-top:22px;
 		}
 	}
-		.nav-right{
-			margin-top:40px;
-			padding-left:303px;
-			height:100px;
-			width:100%;
-			float:left;
-			background-color:#3fae83;
+	.nav-right{
+		z-index:5;
+		position:fixed;
+		top:40px;
+		left:0px;
+		padding-left:303px;
+		height:100px;
+		width:100%;
+		min-width:1264px;
+		background-color:#3fae83;
 
-			li{
+		li{
+			line-height:100px;
+			padding:0;
+			margin:0 auto;
+			float:left; 
+			width:15%; 
+			min-width:110px;
+			border-right:0;
+		}
+		.active{
+			background-color:#258e63;
+		}
+		a{
+			padding:0;
+			margin:0 auto;
+			line-height:100px;
+			border-right:0;
+			text-align:center;
+			color:#FFFFFF;
+			font-family:"微软雅黑";
+			font-size:18px;
+			&:hover{
 				line-height:100px;
-				padding:0;
-				margin:0 auto;
-				float:left; 
-				width:15%; 
-				border-right:0;
-			}
-			.active{
 				background-color:#258e63;
 			}
-			a{
-				padding:0;
-				margin:0 auto;
-				line-height:100px;
-				border-right:0;
-				text-align:center;
-				color:#FFFFFF;
-				font-family:"微软雅黑";
-				font-size:18px;
-				&:hover{
-					line-height:100px;
-					background-color:#258e63;
-				}
-			}
 		}
+	}
 }

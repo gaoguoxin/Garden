@@ -1,10 +1,10 @@
 $(function(){
 	if($('#map').length > 0 ){
     	var map = new BMap.Map("map", { mapType: BMAP_HYBRID_MAP,enableMapClick:false });  
+    	map.centerAndZoom(new BMap.Point(116.30, 39.96), 14);
     	map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_SATELLITE_MAP ]}));         
     	map.setCurrentCity("北京");
 
-    	//设置多边形样式
     	var styleOptions = {
     	    strokeColor:"red",
     	    fillColor:"red",
@@ -40,7 +40,6 @@ $(function(){
     		map.centerAndZoom(new BMap.Point(116.30, 39.96), 14);
     	}
 
-
     	var drawingManager = new BMapLib.DrawingManager(map, {
     	    isOpen: false,
     	    enableDrawingTool: true,
@@ -54,16 +53,12 @@ $(function(){
     	drawingManager.addEventListener('polygoncomplete', function(e,overlay){
 			var removeOlerlay = function(e,ee,overlay){
 				map.removeOverlay(overlay);
-				window.pgs = [];
 			}
 			var markerMenu=new BMap.ContextMenu();
 			markerMenu.addItem(new BMap.MenuItem('删除',removeOlerlay.bind(overlay)));
 			overlay.addContextMenu(markerMenu);
-			window.pgs = [];
-			var polygons = overlay.getPath();
-			$.each(polygons,function(k,v){
-				window.pgs.push([v.lng,v.lat])
-			})
+
+			var paths = overlay.getPath();
     	});    	    	
 	}
 
