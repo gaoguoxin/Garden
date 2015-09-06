@@ -61,6 +61,7 @@ body{
       border:1px solid #cfd8e5;
       .main-search{
         width:100%;
+        margin:20px 30px 30px 30px;
         .main-input{ 
           float:right;
           height:30px; 
@@ -73,6 +74,13 @@ body{
       .main-table{
         margin:20px 30px 30px 30px;
         border:1px solid #a7b4c4;
+      }
+      div.page{
+        padding-right:30px;
+        .pagination{
+          margin:0px 0px 30px 0px;
+          text-align:center;
+        }
       }
     }
     #map{

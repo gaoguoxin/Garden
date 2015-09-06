@@ -1,7 +1,7 @@
 class Admin::GreenbeltsController < Admin::AdminController
   before_action :set_greenbelt, only: [:show, :edit, :change, :destroy]
   def index
-    @greenbelts = Greenbelt.admin_search(params[:page],params[:name])
+    @greenbelts = Greenbelt.admin_search(params[:page],params)
   end
 
   def new 

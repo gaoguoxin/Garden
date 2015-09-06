@@ -2,7 +2,7 @@ class Greenbelt
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Geospatial
-  paginates_per 50
+  paginates_per 10
 
   ROAD      = 0 #道路绿地
   COMMUNITY = 1 #小区绿地
@@ -72,11 +72,17 @@ class Greenbelt
     return arr
   end
 
-  def self.admin_search(page=1,name=nil)
+  def self.admin_search(page=1,opt=nil)
   	greenbelts = self.all
-  	if page.present?
-  	  greenbelts = greenbelts.where(name:/#{name}/)
+  	if opt['code'].present?
+  	  greenbelts = greenbelts.where(code:opt['code'].to_i)
   	end
+    if opt['name'].present?
+      greenbelts = greenbelts.where(name:/#{opt['name']}/)
+    end
+    if opt['organization'].present?
+      greenbelts = greenbelts.where(organization:/#{opt['organization']}/)
+    end
     greenbelts.page(page)
   end
 
