@@ -52,6 +52,9 @@ $(function(){
     				}
 
 					$.get('/greenbelts/nearby',{lng:longitude,lat:latitude},function(res){
+						var showInfo = function(){
+							alert(1);
+						}
 						$.each(res.data,function(idx,d){
     						var lines = [];
     						$.each(d.polygons,function(){
@@ -61,6 +64,7 @@ $(function(){
     						});
 							var polyline = new BMap.Polygon(lines,styleOptions);
 							mp.addOverlay(polyline);
+							polyline.addEventListener('click',showInfo)
 						})
 					})
 				}else{
