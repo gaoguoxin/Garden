@@ -102,7 +102,7 @@ class Greenbelt
   end
 
   def update_info(opt)  
-    if opt['polygons']
+    if opt['polygons'].present?
       opt['polygons']  = opt['polygons'].to_hash.values.map{|arr|[arr[0].to_f,arr[1].to_f]}  
     else
       opt['polygons']  = []

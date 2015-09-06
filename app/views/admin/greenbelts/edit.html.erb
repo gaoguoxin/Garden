@@ -28,17 +28,17 @@
 		  <%= f.hidden_field :type %>
 		  <%= f.hidden_field :polygons %>
 		  <div class="form-group">
-		    <label for="name" class="col-xs-1 control-label">绿地名称</label>
+		    <label for="name" class="col-xs-1 control-label">名称</label>
 		    <div class="col-xs-5">
 		      <%= f.text_field :name,:class => 'form-control',:placeholder => '绿地名称' %>	
 		    </div>
-		    <label for="acreage" class="col-xs-1 control-label">绿地面积</label>
+		    <label for="acreage" class="col-xs-1 control-label">面积</label>
 		    <div class="col-xs-5">
 		      <%= f.text_field :acreage,:class => 'form-control',:placeholder => '绿地面积' %>
 		    </div>		    	    
 		  </div>
 		  <div class="form-group">
-		    <label for="type" class="col-xs-1 control-label">绿地类型</label>
+		    <label for="type" class="col-xs-1 control-label">类型</label>
 		    <div class="col-xs-5">
 				<div class="dropdown">
   					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
@@ -52,19 +52,19 @@
   					</ul>
 				</div>
 		    </div>			  
-		    <label for="type" class="col-xs-1 control-label">绿植种类</label>
+		    <label for="type" class="col-xs-1 control-label">种类</label>
 		    <div class="col-xs-5">
 		      <%= f.text_field :plants,:class => 'form-control',:placeholder => '绿植种类' %>
 		    </div>
 		  </div>		  
 		  <div class="form-group">
-		  	<label for="description" class="col-xs-1 control-label">绿地范围</label>
+		  	<label for="description" class="col-xs-1 control-label">范围</label>
 		  	<div class="col-xs-11">
 		  	    <%= f.text_area :description,:class => 'form-control',:placeholder => '绿地范围' %>
 		  	</div>
 		  </div>
 		  <div class="form-group">
-		    <label for="organization" class="col-xs-1 control-label">责任单位</label>
+		    <label for="organization" class="col-xs-1 control-label">单位</label>
 		    <div class="col-xs-11">
 		      <%= f.text_field :organization,:class => 'form-control',:placeholder => '责任单位' %>
 		    </div>		    

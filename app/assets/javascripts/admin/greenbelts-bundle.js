@@ -62,8 +62,12 @@ $(function(){
 			var markerMenu=new BMap.ContextMenu();
 			markerMenu.addItem(new BMap.MenuItem('删除',removeOlerlay.bind(overlay)));
 			overlay.addContextMenu(markerMenu);
-
-			var paths = overlay.getPath();
+			window.pgs = [];
+			var polygons = overlay.getPath();
+			$.each(polygons,function(k,v){
+				window.pgs.push([v.lng,v.lat])
+			})
+			// var paths = overlay.getPath();
     	});    	    	
 	}
 
