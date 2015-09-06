@@ -10,18 +10,19 @@
       <li class='active'><a href="javascript:void(0);">绿地列表<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
       <li><a href="greenbelts/new">新增绿地<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
     </ul>
+    <div class="copy">版权所有 &nbsp;&copy;&nbsp;北京市海淀区园林绿化局</div>
   </div>   
 <% end %>
 <div class="main-pannel">
-<div class="main-inner">
 <div class="main-search">
-  <input type="text" class="main-input" placeholder="请输入绿地名称" />
+    <button><span class="glyphicon glyphicon-search" ></span></button>
+    <input type="text" class="main-input" placeholder="请输入绿地名称" />
 </div>
 <div class="main-table">
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>绿地编号</th>
+        <th>编号</th>
         <th>绿地名称</th>
         <th>绿地范围</th>
         <th>绿地面积</th>
@@ -59,7 +60,6 @@
       <% end %>
     </tbody>   
   </table>
-  </div>
   </div>
   <%= paginate @greenbelts %>
 </div>
