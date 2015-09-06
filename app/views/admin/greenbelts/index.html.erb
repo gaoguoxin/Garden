@@ -4,15 +4,20 @@
 <% end %>
 
 <% content_for :sidebar do %>
-  <div class="col-xs-2 sidebar">
+  <div class="sidebar">
     <ul class="nav nav-sidebar">
-      <li class='active'><a href="javascript:void(0);">绿地列表</a></li>
-      <li><a href="greenbelts/new">新增绿地</a></li>
+      <li class="nav-title" >绿地台账</li>
+      <li class='active'><a href="javascript:void(0);">绿地列表<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
+      <li><a href="greenbelts/new">新增绿地<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
     </ul>
   </div>   
 <% end %>
-
-<div class="col-xs-10 main">
+<div class="main-pannel">
+<div class="main-inner">
+<div class="main-search">
+  <input type="text" class="main-input" placeholder="请输入绿地名称" />
+</div>
+<div class="main-table">
   <table class="table table-hover">
     <thead>
       <tr>
@@ -54,5 +59,7 @@
       <% end %>
     </tbody>   
   </table>
+  </div>
+  </div>
   <%= paginate @greenbelts %>
 </div>

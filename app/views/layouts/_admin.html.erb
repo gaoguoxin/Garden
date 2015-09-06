@@ -1,4 +1,32 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="welcome-head">
+  <div class="welcome-left">欢迎来到园林绿地智能监管系统!</div>
+  <div class="welcome-right">
+    <div><a href="/logout" class="welcome-logout">退出</a></div>
+    <div class="welcome-username"><%= @current_user.try(:name) %></div>
+    <div class="glyphicon glyphicon glyphicon-cog welcome-setting"></div>
+    <div class="glyphicon glyphicon glyphicon glyphicon-envelope welcome-msg">
+      <span class="badge msg-num">3</span>
+    </div>
+  </div>
+</div>
+<div class="nav-left">
+  <%=image_tag 'logo-1.png', class:'nav-img'%>
+  <p>北京市海淀区<br>园林绿地智能监管系统</p>
+</div>
+  <div class="nav-right">
+    <ul class="nav">
+        <li class='active'><a href="/admin/greenbelts">绿地台账</a></li>
+        <li><a href="#">监理人员</a></li>
+        <li><a href="#">监理任务</a></li>
+        <li><a href="#">问题反馈</a></li>
+        <li><a href="#">统计分析</a></li>
+        <li><a href="#">评价管理</a></li>
+    </ul>
+  </div>
+<!--
+
+
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -6,7 +34,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">园林绿地智能监管系统</a>
+      <a class="navbar-brand" href="/">欢迎来到园林绿地智能监管系统</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -22,7 +50,7 @@
       </ul>
     </div>
   </div>
-</nav>
+</nav>-->
 <div class="container-fluid">
   <div class="row">
       <%= yield :sidebar %>   
