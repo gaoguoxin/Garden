@@ -28,6 +28,14 @@ $(function(){
     		})
 			var polyline = new BMap.Polygon(lines,styleOptions);
 			map.addOverlay(polyline);
+
+			var markerMenu=new BMap.ContextMenu();
+			markerMenu.addItem(new BMap.MenuItem('删除',function(){
+				map.removeOverlay(polyline);
+				map.removeOverlay(marker);
+				window.pgs = [];
+			}));
+			polyline.addContextMenu(markerMenu);
     	}else{
     		map.centerAndZoom(new BMap.Point(116.30, 39.96), 14);
     	}
@@ -81,11 +89,13 @@ $(function(){
 			description:$.trim($('#greenbelt_description').val()),
 			organization:$.trim($('#greenbelt_organization').val()),
 			connects:connects,
-			polygons:window.pgs.length > 0  ?  window.pgs : window.polygons
+			polygons:window.pgs  ?  window.pgs : window.polygons
 			 
 		}
 		$.post('/admin/greenbelts/change',{id:gid,greenbelt:data},function(retval){
-			console.log(retval)
+			if(retval.success){
+				window.location.href= '/admin/greenbelts';
+			}
 		})
 	})
 })

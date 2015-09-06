@@ -102,7 +102,11 @@ class Greenbelt
   end
 
   def update_info(opt)  
-    opt['polygons']   = opt['polygons'].to_hash.values.map{|arr|[arr[0].to_f,arr[1].to_f]}
+    if opt['polygons']
+      opt['polygons']  = opt['polygons'].to_hash.values.map{|arr|[arr[0].to_f,arr[1].to_f]}  
+    else
+      opt['polygons']  = []
+    end
     opt['connects']   = opt['connects'].to_hash.values
     self.name         = opt['name']
     self.acreage      = opt['acreage'].to_f
@@ -120,6 +124,8 @@ class Greenbelt
     if self.polygons.length > 0  
       center = self.polygons.center
       self.position = center
+    else
+      self.position = nil
     end
   end
 
