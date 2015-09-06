@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :greenbelts
+  resources :greenbelts do 
+    collection do 
+      get 'nearby'
+    end
+  end
 
   namespace :admin do
     resources :greenbelts do 

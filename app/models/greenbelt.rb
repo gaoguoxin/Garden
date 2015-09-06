@@ -91,7 +91,8 @@ class Greenbelt
   end
 
   def self.nearby(coordinate,max_distance=3)
-    self.geo_near(coordinate).max_distance(max_distance)
+    res = self.geo_near(coordinate).max_distance(max_distance)
+    return res
   end  
 
   #创建责任人

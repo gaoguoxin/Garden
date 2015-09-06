@@ -67,7 +67,6 @@ $(function(){
 			$.each(polygons,function(k,v){
 				window.pgs.push([v.lng,v.lat])
 			})
-			// var paths = overlay.getPath();
     	});    	    	
 	}
 
