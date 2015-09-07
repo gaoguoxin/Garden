@@ -1,104 +1,145 @@
 body{
-  .sidebar{    
-    position: fixed;
-    top: 0px;
-    padding-top:140px;
-    bottom: 0;
-    left: 0;
-    display: block;
-    padding: 140px 0px 20px 0px;
-    width:303px;
-    height:100%;
-    min-height:500px;
-    background-color: #303b4c;
-    border: 0;
+            .sidebar{    
+                            position: fixed;
+                            top: 0px;
+                            padding-top:140px;
+                            bottom: 0;
+                            left: 0;
+                            display: block;
+                            padding: 140px 0px 20px 0px;
+                            width:303px;
+                            height:100%;
+                            min-height:500px;
+                            background-color: #303b4c;
+                            border: 0;
 
-    li{
-      font-size:16px;
-      color:#9ea9ba;
-      height:80px;
-      line-height:60px;
-      width:303px;
-      border-left:8px solid #303b4c;
-      text-align:center;     
-      a{
-        font-size:16px;
-        color:#9ea9ba;
-        height:80px;
-        line-height:60px;
-        width:295px;
-        text-align:center;
-        &:hover{
-          background-color:#2a323f;
-        }
-      }
-    }
-    span{
-            float:right;
-            size: 14px;
-            line-height: 60px;
-            margin-right: 40px;
-    }
-    .active{
-            color:#74849a;
-            background-color:#2a323f;
-            border-left:8px solid #3fea83;
-            width:303px;
-    }
-    .nav-title{
-            border-bottom:1px solid #38485e; 
-            line-height:80px; 
-            margin-left: -30px;
-    }
-    .copy{
-          position:absolute;
-          bottom:20px;
-          color:#465367;
-          font-size:14px;
-          width:303px;
-          text-align:center;
-    }
-  }
+                            li{
+                                        font-size:16px;
+                                        color:#9ea9ba;
+                                        height:80px;
+                                        line-height:60px;
+                                        width:303px;
+                                        border-left:8px solid #303b4c;
+                                        text-align:center;     
+                                        a{
+                                                      font-size:16px;
+                                                      color:#9ea9ba;
+                                                      height:80px;
+                                                      line-height:60px;
+                                                      width:295px;
+                                                      text-align:center;
+                                                      &:hover{
+                                                                    background-color:#2a323f;
+                                                      }
+                                        }
+                            }
+                            span{
+                                          float:right;
+                                          size: 14px;
+                                          line-height: 60px;
+                                          margin-right: 40px;
+                          }
+                          .active{
+                                          color:#74849a;
+                                          background-color:#2a323f;
+                                          border-left:8px solid #3fea83;
+                                          width:303px;
+                          }
+                          .nav-title{
+                                          border-bottom:1px solid #38485e; 
+                                          line-height:80px; 
+                                          margin-left: -30px;
+                          }
+                          .copy{
+                                          position:absolute;
+                                          bottom:20px;
+                                          color:#465367;
+                                          font-size:14px;
+                                          width:303px;
+                                          text-align:center;
+                          }
+          }
 
-  .main-pannel{
-    z-index:1;
-    position:absolute;
-    top:160px;
-    left:323px;
-    min-width:921px;
-    margin-right:20px;
-    margin-bottom:20px;
-    background-color:#FFFFFF;
-    border:1px solid #cfd8e5;
-    .main-search{
-      width:100%;
-      height:70px;
-      padding:20px  30px  20px 30px;
-    }
-    .main-table{
-      margin:0px 30px 30px 30px;
-      border:1px solid #a7b4c4;
-      td{
-        text-align:center;
-        vertical-align:middle;
-      }
-    }
-    div.page{
-      padding-right:30px;
-      .pagination{
-        margin:0px 0px 30px 0px;
-        text-align:center;
-      }
-    }
-    form.edit-greenbelt{
-      margin-top:30px;
-      padding:15px;
-    }   
-    .explain{
-      padding-left:15px;
-    }     
-    #map{
-      min-height:630px;
-    }
-  }
+        .main-pannel{
+                            z-index:1;
+                            position:absolute;
+                            top:160px;
+                            left:323px;
+                            min-width:921px;
+                            margin-right:20px;
+                            margin-bottom:20px;
+                            background-color:#FFFFFF;
+                            border:1px solid #cfd8e5;
+                            .main-search{
+                                          width:100%;
+                                          height:70px;
+                                          padding:20px  30px  20px 30px;
+                                          input{                                                          
+                                                          -moz-border-radius:0px;  
+                                                          -webkit-border-radius:0px;  
+                                                          border-radius:0px;
+                                                          margin-right:10px;
+                                                          &:focus{
+                                                                          border-color:rgb(163, 220, 198);
+                                                                          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgb(156, 224, 198);
+                                                          }
+                                          }
+                                          .btn-search{
+                                                          margin-left:10px;
+                                                          background-color:rgba(113, 160, 199, 0.99);
+                                                          border-color: #7096B7;
+                                          }
+                           }
+                          .main-table{
+                                          margin:0px 30px 10px 30px;
+                                          border:1px solid #a7b4c4;
+                                          th{
+                                                          text-align:center;
+                                                          vertical-align:middle;
+                                          }
+                                          td{
+                                                          text-align:center;
+                                                          vertical-align:middle;
+                                          }
+                                          .intable{
+                                                          margin-bottom:0px;
+                                          }
+                                          .btn-forbid{
+                                                          background-color:#3FAE83;
+                                                          border-color:#258E63;
+                                                          margin-left:10px;
+                                                          &:hover{
+                                                                        background-color:#379873;
+                                                          }
+                                          }
+                            }
+                          div.page{
+                                          padding-right:30px;
+                                          .pagination{    
+                                                          font-size: 13px;
+                                                          margin:0px 0px 20px 0px;
+                                                          text-align:center;
+                                                          .active{
+                                                                          a{
+                                                                                        color:#FFFFFF;
+                                                                                        background-color:rgb(63, 174, 131);
+                                                                                        border-color:#258E63;
+                                                                              }
+                                                          }
+                                                          a{
+                                                                            color:#3FAE83;
+                                                            }                     
+                                          }
+                            }
+                            form.edit-greenbelt{
+                                          margin-top:30px;
+                                          padding:15px;
+                            }   
+                            .explain{
+                                          padding-left:15px;
+                            }     
+                            #map{
+                                          min-height:630px;
+                            }
+              }
 }
