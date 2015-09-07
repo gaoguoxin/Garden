@@ -1,8 +1,8 @@
 $(function(){
 
             //设置main-table min高度,实际宽度
-            $(".main-pannel").css("min-height",$(".sidebar").innerHeight ()-$(".main-pannel").offset().top-20+"px");
-            $(".main-pannel").css("width",$(window).width()-343+"px");
+    $(".main-pannel").css("min-height",$(".sidebar").innerHeight ()-$(".main-pannel").offset().top-20+"px");
+    $(".main-pannel").css("width",$(window).width()-343+"px");
     
 	if($('#map').length > 0 ){
     	var map = new BMap.Map("map", { mapType: BMAP_HYBRID_MAP,enableMapClick:false });  
@@ -33,7 +33,6 @@ $(function(){
     		})
 			var polyline = new BMap.Polygon(lines,styleOptions);
 			map.addOverlay(polyline);
-
 			var markerMenu=new BMap.ContextMenu();
 			markerMenu.addItem(new BMap.MenuItem('删除',function(){
 				map.removeOverlay(polyline);

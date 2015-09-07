@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
-  before_filter :authenticate_openid,:except => [:notify]
-  before_filter :get_wx_config_info  
+  #before_filter :authenticate_openid,:except => [:notify]
+  #before_filter :get_wx_config_info  
   layout :resolve_layout
   helper_method :current_user
   has_mobile_fu

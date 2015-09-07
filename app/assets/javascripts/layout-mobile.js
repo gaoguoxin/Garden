@@ -52,9 +52,6 @@ $(function(){
     				}
 
 					$.get('/greenbelts/nearby',{lng:longitude,lat:latitude},function(res){
-						var showInfo = function(){
-							alert(1);
-						}
 						$.each(res.data,function(idx,d){
     						var lines = [];
     						$.each(d.polygons,function(){
@@ -64,7 +61,22 @@ $(function(){
     						});
 							var polyline = new BMap.Polygon(lines,styleOptions);
 							mp.addOverlay(polyline);
-							polyline.addEventListener('click',showInfo)
+
+							var opts = {
+							  position : new BMap.Point(d.polygons[0][0],d.polygons[0][1]),
+							  offset   : new BMap.Size(0,0)
+							}
+							var label = new BMap.Label(d.code + "号绿地", opts);
+							label.setStyle({
+								 color : "green",
+								 fontSize : "12px",
+								 height : "20px",
+								 lineHeight : "20px",
+								 fontFamily:"微软雅黑",
+								 border:'0px',
+								 backgroundColor:'transparent'
+							});
+							mp.addOverlay(label);
 						})
 					})
 				}else{
@@ -101,6 +113,24 @@ $(function(){
   //   			})
 		// 		var polyline = new BMap.Polygon(lines,styleOptions);
 		// 		mp.addOverlay(polyline);
+
+		// 		var opts = {
+		// 		  position : new BMap.Point(d.polygons[0][0],d.polygons[0][1]),
+		// 		  offset   : new BMap.Size(0,0)
+		// 		}
+		// 		var label = new BMap.Label(d.code + "号绿地", opts);
+		// 			label.setStyle({
+		// 				 color : "green",
+		// 				 fontSize : "12px",
+		// 				 height : "20px",
+		// 				 lineHeight : "20px",
+		// 				 fontFamily:"微软雅黑",
+		// 				 border:'0px',
+		// 				 backgroundColor:'transparent'
+		// 			 });
+		// 		mp.addOverlay(label); 
+
+
 		// 	})
 		// })
 		// test code end
