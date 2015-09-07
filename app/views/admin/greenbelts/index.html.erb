@@ -29,11 +29,11 @@
           <label for="gorigin">责任单位</label>
           <input type="text" name="organization" class="form-control" id="gorigin" placeholder="责任单位">
         </div>  
-        <button type="submit" class="btn btn-primary">开始查找</button>
+        <button type="submit" class="btn btn-primary btn-search">查找</button>
       </form>
     </div>
     <div class="main-table">
-      <table class="table table-hover">
+      <table class="table table-hover  intable">
         <thead>
           <tr>
             <th>绿地编号</th>
@@ -67,8 +67,8 @@
                   <%= green.connects.last[:email]%><br>
               </td>
               <td>
-                <a class="btn btn-warning disable-btn" href="javascript:void(0);" role="button">禁用</a>
-                <a class="btn btn-primary" href="greenbelts/<%=green.id.to_s%>/edit" role="button">修改</a>
+                <a class="btn-sm btn-warning disable-btn" href="javascript:void(0);" role="button">禁用</a>
+                <a class="btn-sm btn-primary  btn-forbid" href="greenbelts/<%=green.id.to_s%>/edit" role="button">修改</a>
               </td>          
             </tr>
           <% end %>
