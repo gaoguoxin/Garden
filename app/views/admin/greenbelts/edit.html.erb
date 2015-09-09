@@ -16,12 +16,15 @@
     </ul>
   </div>       
 <% end %>
-
+<div class="map-shade">
+</div>
 <div class="main-pannel">
 	<div class="main-inner">
 		<div class="explain">
-			<p>1、选择小手可以进行拖拽地图.选择多边形以进行圈地.双击鼠标圈地结束</p>
-			<p>2、在所圈范围上右键可以取消所圈绿地</p>	
+			<p>使用说明：</p>
+			<p>1、点击地图开始编辑绿地范围，滑动鼠标滚轮将以鼠标所在位置为中心进行地图缩放；</p>
+			<p>2、选择小手可以进行地图拖拽；选择多边形可以重新圈地，双击鼠标圈地结束，同时将自动删除之前的标记范围；</p>	
+			<p>3、在所圈范围上右键可以取消所圈绿地；</p>	
 		</div>	
 		<div id='map'></div>
 		<%= form_for([:admin,@greenbelt],:html => {:class => 'form-horizontal edit-greenbelt'}) do |f| %>
@@ -33,13 +36,11 @@
 		      <%= f.text_field :name,:class => 'form-control',:placeholder => '绿地名称' %>	
 		    </div>
 		    <label for="acreage" class="col-xs-1 control-label">面积</label>
-		    <div class="col-xs-5">
+		    <div class="col-xs-2">
 		      <%= f.text_field :acreage,:class => 'form-control',:placeholder => '绿地面积' %>
-		    </div>		    	    
-		  </div>
-		  <div class="form-group">
+		    </div>
 		    <label for="type" class="col-xs-1 control-label">类型</label>
-		    <div class="col-xs-5">
+		    <div class="col-xs-2">
 				<div class="dropdown">
   					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
   						<span class="type"><%= @greenbelt.gtype || '绿地类型' %></span>
@@ -51,7 +52,13 @@
   					  <% end %>
   					</ul>
 				</div>
-		    </div>			  
+		    </div>					    	    
+		  </div>
+		  <div class="form-group">  
+		    <label for="organization" class="col-xs-1 control-label">单位</label>
+		    <div class="col-xs-5">
+		      <%= f.text_field :organization,:class => 'form-control',:placeholder => '责任单位' %>
+		    </div>
 		    <label for="type" class="col-xs-1 control-label">种类</label>
 		    <div class="col-xs-5">
 		      <%= f.text_field :plants,:class => 'form-control',:placeholder => '绿植种类' %>
@@ -62,12 +69,6 @@
 		  	<div class="col-xs-11">
 		  	    <%= f.text_area :description,:class => 'form-control',:placeholder => '绿地范围' %>
 		  	</div>
-		  </div>
-		  <div class="form-group">
-		    <label for="organization" class="col-xs-1 control-label">单位</label>
-		    <div class="col-xs-11">
-		      <%= f.text_field :organization,:class => 'form-control',:placeholder => '责任单位' %>
-		    </div>		    
 		  </div>
 		  <% @greenbelt.connects.each_with_index do |connect,idx| %>
 		  	<div class="form-group">
@@ -86,7 +87,7 @@
 		  	</div>		  
 		  <% end %>		  		  
 		  <div class="form-group">
-		    <div class="col-xs-offset-1 col-xs-11">
+		    <div class="col-xs-offset-2 col-xs-8">
 		      <button type="submit" class="btn btn-primary btn-block">提交</button>
 		    </div>
 		  </div>

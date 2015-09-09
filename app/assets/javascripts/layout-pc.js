@@ -14,4 +14,8 @@ $(window).scroll(function(event){
 	$(".nav-right").css("left",0-$(window).scrollLeft()+"px");
 	$(".welcome-head").css("left",0-$(window).scrollLeft()+"px");
 	$(".sidebar").css("left",0-$(window).scrollLeft()+"px");
+	if($('#map').length > 0 ){
+		 $(".map-shade").css("top",$('#map').offset ().top+"px");
+		 $(".map-shade").css("left",$('#map').offset ().left+"px");
+	}
 });
