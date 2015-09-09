@@ -1,3 +1,5 @@
+///= require RectangleZoom_min
+
 $(function(){
 
             //设置main-table min高度,实际宽度
@@ -5,6 +7,9 @@ $(function(){
     $(".main-pannel").css("width",$(window).width()-343+"px");
     
 	if($('#map').length > 0 ){
+	 $(".map-shade").css("height",$('#map').innerHeight ()+"px");
+	 $(".map-shade").css("width",$('#map').innerWidth ()+"px");
+
     	var map = new BMap.Map("map", { mapType: BMAP_HYBRID_MAP,enableMapClick:false });  
     	map.centerAndZoom(new BMap.Point(116.30, 39.96), 14);
     	map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_SATELLITE_MAP ]}));         
@@ -22,7 +27,7 @@ $(function(){
     	//如果某块绿地已经做过地图标记则显示
     	if(window.p_center[0] && window.p_center[1]){
     		var marker = new BMap.Marker(new BMap.Point(window.p_center[0], window.p_center[1]));
-    		map.centerAndZoom(new BMap.Point(window.p_center[0], window.p_center[1]), 14);
+    		map.centerAndZoom(new BMap.Point(window.p_center[0], window.p_center[1]), 24);
     		map.addOverlay(marker); 
     		marker.setAnimation(BMAP_ANIMATION_BOUNCE);
     		var lines = [];
@@ -33,6 +38,7 @@ $(function(){
     		})
 			var polyline = new BMap.Polygon(lines,styleOptions);
 			map.addOverlay(polyline);
+			polyline.enableEditing();
 			var markerMenu=new BMap.ContextMenu();
 			markerMenu.addItem(new BMap.MenuItem('删除',function(){
 				map.removeOverlay(polyline);
@@ -58,15 +64,31 @@ $(function(){
 			var removeOlerlay = function(e,ee,overlay){
 				map.removeOverlay(overlay);
 			}
+			overlay.enableEditing();
 			var markerMenu=new BMap.ContextMenu();
 			markerMenu.addItem(new BMap.MenuItem('删除',removeOlerlay.bind(overlay)));
 			overlay.addContextMenu(markerMenu);
+			overlay.enableEditing();
+			var allOverlay = map.getOverlays();
+			for (var i = 0; i < allOverlay.length -1; i++){
+				if(allOverlay[i] != overlay){
+					map.removeOverlay(allOverlay[i]);
+				}
+			}
 			window.pgs = [];
 			var polygons = overlay.getPath();
 			$.each(polygons,function(k,v){
 				window.pgs.push([v.lng,v.lat])
 			})
-    	});    	    	
+			$("html,body").stop(true);$("html,body").animate({scrollTop: $(".edit-greenbelt").offset().top}, 1000);
+    	});    
+
+		$('.map-shade').click(function(){
+			$('.map-shade').css("visibility","hidden");
+		})
+		$('input').focus(function(){
+			$('.map-shade').css("visibility","visible");
+		})	    	
 	}
 
 	$('.green_type').click(function(){
@@ -75,7 +97,6 @@ $(function(){
 		$('#greenbelt_type').val(t)
 		$('#dropdownMenu1 span.type').text(txt)	
 	})
-	
 	$('.btn-block').click(function(e){
 		e.preventDefault();
 		var connects = [
