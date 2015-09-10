@@ -1,5 +1,7 @@
 //= require global
 //= require weixin
+//= require geoUtils.js
+
 $(function(){
 	wx.config({
 		debug: false,
@@ -114,26 +116,48 @@ $(function(){
 				var polyline = new BMap.Polygon(lines,styleOptions);
 				mp.addOverlay(polyline);
 
-				var opts = {
-				  position : new BMap.Point(d.polygons[0][0],d.polygons[0][1]),
-				  offset   : new BMap.Size(0,0)
-				}
-				var label = new BMap.Label(d.code + "号绿地", opts);
-					label.setStyle({
-						 color : "green",
-						 fontSize : "12px",
-						 height : "20px",
-						 lineHeight : "20px",
-						 fontFamily:"微软雅黑",
-						 border:'0px',
-						 backgroundColor:'transparent'
-					 });
-				mp.addOverlay(label); 
-
-
+				// var opts = {
+				//   position : new BMap.Point(d.polygons[0][0],d.polygons[0][1]),
+				//   offset   : new BMap.Size(0,0)
+				// }
+				// var label = new BMap.Label(d.code + "号绿地", opts);
+				// 	label.setStyle({
+				// 		 color : "green",
+				// 		 fontSize : "12px",
+				// 		 height : "20px",
+				// 		 lineHeight : "20px",
+				// 		 fontFamily:"微软雅黑",
+				// 		 border:'0px',
+				// 		 backgroundColor:'transparent'
+				// 	 });
+				// mp.addOverlay(label); 
 			})
 		})
+
+
+			function showInfo(e){
+				
+			var allOverlay = mp.getOverlays();
+			for (var i = 0; i < allOverlay.length -1; i++){
+				if(BMapLib.GeoUtils.isPointInPolygon(e.point, allOverlay[i])){
+					$('.new-feed-modal').modal('show');
+					break;
+				}
+			}
+			}
+			mp.addEventListener("click", showInfo);
+
+			$("#judge-yes").change(function(){
+				if($("#judge-yes").val()=="1"){
+					$("#problem-description").css('display','block');
+				}else{
+					$("#problem-description").css('display','none');
+				}
+			});
+
 		// test code end
 	
 
 })
+
+    

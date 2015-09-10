@@ -17,7 +17,6 @@ class Greenbelt
   field :code,type:Integer #绿地编码
   field :name,type:String #绿地名称
   field :address,type:String #绿地详细地址(经过地图得出)
-  #field :position,type:Point,sphere: true #经纬度
   field :position, type: Point, spatial: true  # 2d
   field :polygons,type:Polygon #多边形拐点坐标
   field :type,type:Integer,default:ROAD #绿地类型(道路、小区、河湖、公园)	
@@ -28,7 +27,6 @@ class Greenbelt
   field :connects,type:Array #联系人及联系方式
   field :status,type:Integer,default:ENABLE
 
-  #index({ position: "2dsphere"}, { background: true })
   after_create :generate_principal
   before_save  :get_position
 

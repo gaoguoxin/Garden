@@ -1,5 +1,3 @@
-///= require RectangleZoom_min
-
 $(function(){
 
             //设置main-table min高度,实际宽度
