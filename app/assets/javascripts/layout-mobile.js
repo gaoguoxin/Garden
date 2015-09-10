@@ -149,8 +149,10 @@ $(function(){
 
 			$("#judge-yes").change(function(){
 				if($("#judge-yes").val()=="1"){
+					$("#problem-classfy").css('display','block');
 					$("#problem-description").css('display','block');
 				}else{
+					$("#problem-classfy").css('display','none');
 					$("#problem-description").css('display','none');
 				}
 			});
